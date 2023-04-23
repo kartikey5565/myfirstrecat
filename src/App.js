@@ -24,7 +24,7 @@ const App = () => {
       title: "New Desk (Wooden)",
       amount: 450,
       date: new Date(2021, 5, 12)
-    }
+  }
   ];
   return (
     <div>
@@ -32,13 +32,11 @@ const App = () => {
       <MyItem
         title={expenses[0].title}
         amount={expenses[0].amount}
-        
         date={expenses[0].date}
       />
       <MyItem
         title={expenses[1].title}
         amount={expenses[1].amount}
-        
         date={expenses[1].date}
       />
       <MyItem
