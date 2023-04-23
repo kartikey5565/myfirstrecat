@@ -1,6 +1,6 @@
 import MyItem from "./components/Expenses/ExpenseItem";
-// import ExpenseDate from './components/Expenses/ExpenseForm'
-import ExpenseForm from "./components/Expenses/ExpenseForm";
+import AllExpenses from "./components/Expenses/AllExpenses";
+import NewExpense from "./components/newExpense/newExpense";
 const App = () => {
   const expenses = [
     {
@@ -29,9 +29,8 @@ const App = () => {
     }
   ];
   return (
-    <div>
-      <h2>Let's get started!</h2>
-      <ExpenseForm/>
+    <AllExpenses>
+      <NewExpense/>
       <MyItem
         title={expenses[0].title}
         amount={expenses[0].amount}
@@ -52,7 +51,8 @@ const App = () => {
         amount={expenses[3].amount}
         date={expenses[3].date}
       />
-    </div>
+    </AllExpenses>
   );
 }
+
 export default App;
