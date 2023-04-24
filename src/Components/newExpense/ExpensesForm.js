@@ -1,7 +1,8 @@
 import './ExpenseForm.css'
 import { useState } from 'react'
-const ExpenseForm = (props)=> {
-const [enteredTitle, setenteredTitle] = useState("")
+const ExpenseForm = (props)=>{
+    
+    const [enteredTitle, setenteredTitle] = useState("")
     const [enteredAmount, setenteredAmount] = useState("")
     const [enteredDate, setEnteredDate] = useState("")
     const titleChangeHandler = (event)=>{
@@ -16,11 +17,12 @@ const [enteredTitle, setenteredTitle] = useState("")
     const submitHandler = event =>{
         event.preventDefault()
         const userData = {
+            id : Math.random(),
             title : enteredTitle,
             amount : enteredAmount,
             date : new Date(enteredDate)
         }
-
+    
         setenteredTitle('')
         setenteredAmount('')
         setEnteredDate('')
