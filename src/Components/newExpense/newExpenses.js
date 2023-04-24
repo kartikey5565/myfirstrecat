@@ -1,16 +1,25 @@
 import './newExpense.css'
 import ExpenseForm from './ExpenseForm'
+import { useState } from 'react'
 
-
-const newExpense = (props)=>{
-
+const NewExpense = (props)=>{
+    const [addBtn, setAddBtn] = useState(false)
     function submitted(data){
         // console.log(data)
         props.onNewExpense(data)
+        setAddBtn(false)
+    }
+    const showForm = ()=>{
+        setAddBtn(true)
+    }
+    const dontShowForm = ()=>{
+        setAddBtn(false)
     }
 
     return <div className='new-expense'>
-        <ExpenseForm onSubmitForm={submitted} />
+    
+       {!addBtn && <button onClick={showForm}>Add Expense</button>}
+       {addBtn && <ExpenseForm onCancel = {dontShowForm} onSubmitForm={submitted} />}
     </div>
 }
-export default newExpense
+export default NewExpense

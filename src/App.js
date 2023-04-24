@@ -1,7 +1,7 @@
-import MyItem from "./components/Expenses/ExpenseItem";
 import AllExpenses from "./components/Expenses/AllExpenses";
-import NewExpense from "./components/newExpense/newExpense";
+import NewExpense from "./components/newExpense/NewExpense";
 import ExpenseFilter from "./components/Expenses/ExpenseFilter";
+import ExpenseChart from "./components/Expenses/ExpenseChart";
 import { useState } from "react";
 //import newExpense from "./components/newExpense/newExpense";
 const dummyData = [
@@ -34,7 +34,6 @@ const App = () => {
   console.log("Rendered")
   const [expenses, updateExpenses] = useState(dummyData);
   const [selectedYear, setSelectedYear] = useState('2020')
-
   const newExpenseHandler = data =>{
     console.log(data)
     updateExpenses(preExpenses =>{
@@ -45,18 +44,19 @@ const App = () => {
   const yearSelectHandler = data =>{ 
     setSelectedYear(data)
   }
-
-  
+  var filteredArr = expenses.filter(
+    (e) => e.date.getFullYear().toString() === selectedYear
+  );
 
   return (<div>
       <NewExpense onNewExpense = {newExpenseHandler}/>
-      <ExpenseFilter onYearSelect ={yearSelectHandler}/>
-      { expenses.map(expense => <MyItem key = {expense.id} title = {expense.title} amount= {expense.amount} date={expense.date}/>)}
       <ExpenseFilter selected={selectedYear} onYearSelect ={yearSelectHandler}/>
+      <ExpenseChart expenses ={filteredArr}/>
       <AllExpenses items = {expenses} date = {selectedYear}/>
       </div>
 
+      
+    
   );
 }
-
 export default App;

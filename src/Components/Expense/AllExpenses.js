@@ -5,15 +5,13 @@ const AllExpenses = (props) => {
   var filteredArr = props.items.filter(
     (e) => e.date.getFullYear().toString() === props.date
   );
-  let expensesContent = <p>No Expenses</p>
-  let single = <p></p>
-
-  if (filteredArr.length===1){
-    single = <p> Only Single expense. Add More</p>
+  if (filteredArr.length===0){
+    return <h2>No Expenses</h2>
   }
 
-  if (filteredArr.length>0){
-    expensesContent = filteredArr.map((element) => (
+  return (
+    <div>
+      { filteredArr.map((element) => (
         <ExpenseItem
           key={element.id}
           title={element.title}
@@ -23,11 +21,6 @@ const AllExpenses = (props) => {
       ))
   }
 
-
-  return (
-    <div>
-      {expensesContent}
-      {single}
     </div>
   );
 };
